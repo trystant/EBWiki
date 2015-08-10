@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/analytics', to: 'analytics#show'
+
   get 'agencies/show'
 
   get '/about', to: 'static#about'

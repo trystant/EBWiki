@@ -52,9 +52,14 @@ gem "bullet"
 gem 'ahoy_matey'
 
 gem 'rollbar', '~> 1.5.3'
+
+# help with charts and graphs
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
+gem 'hightop'
+
 group :development, :test do
-
-
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug'
 
