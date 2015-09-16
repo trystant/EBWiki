@@ -2,11 +2,11 @@
 # This is not finished
 
 Given(/^I follow "(.*?)"$/) do |link_name|
-  pending # express the regexp above with the code you wish you had
+  click_link link_name
 end
 
 When(/^I fill in "(.*?)" with "(.*?)"$/) do |field, value|
-  pending # express the regexp above with the code you wish you had
+  fill_in field, :with => value
 end
 
 When(/^I press "(.*?)"$/) do |button_name|

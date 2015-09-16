@@ -2,7 +2,8 @@
 # This is not finished
 
 Given(/^I am on the show page$/) do
-	@article = FactoryGirl.create(:article)
+	@state = FactoryGirl.create(:state)
+	@article = FactoryGirl.create(:article, state_id: @state.id)
   visit article_path(@article)
 end
 
