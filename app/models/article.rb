@@ -18,6 +18,7 @@ class Article < ActiveRecord::Base
 
 	has_paper_trail :only => [:title, :overview, :litigation, :community_action]
 	acts_as_followable
+  acts_as_taggable # Alias for acts_as_taggable_on :tags
 	extend FriendlyId
 	friendly_id :title, use: [:slugged, :finders]
 	searchkick

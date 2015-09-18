@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get '/maps/index', to: 'maps#index'
+  get 'tags/:tag', to: 'articles#index', as: :tag
 
   get 'agencies/show'
 

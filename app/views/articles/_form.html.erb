@@ -35,8 +35,8 @@
 			  </div>
 				<h4>Add a YouTube Video url relating to the case:</h4>
 				<%= f.input :video_url %>
-				<h4>Enter a category of abuse:</h4>
-				<%= f.collection_select :category_id, Category.all, :id, :name, {prompt: "Choose a Category"} %>
+				<h4>Enter tags separated by commas:</h4>
+				<%= f.text_field :tag_list, :class => "taggalicious" %>
 	    </div>
 		</fieldset>
 	</div>
@@ -116,4 +116,11 @@
   $('input[id=lefile_article]').change(function() {
   $('#photoCover_article').val(_.last($(this).val().split("\\")));
   });
+</script>
+
+<script type="text/javascript">
+  $(".taggalicious").select2({
+	  tags: true,
+	  tokenSeparators: [',', ' ']
+	})
 </script>

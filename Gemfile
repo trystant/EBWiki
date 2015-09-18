@@ -130,6 +130,9 @@ gem "select2-rails"
 # follower functionality
 gem "acts_as_follower"
 
+# tagging functionality
+gem 'acts-as-taggable-on', '~> 3.4'
+
 # messaging
 gem 'mailboxer', git: 'git://github.com/lacco/mailboxer.git'
 
