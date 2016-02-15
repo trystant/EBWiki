@@ -1,0 +1,5 @@
+<% if current_user %>
+  <%= link_to 'Get our newsletter', ENV['MAILCHIMP_LINK'], class: "btn btn-default" unless current_user.mailchimp_status == "subscribed" && "pending" %>
+<% else %>
+  <%= link_to 'Get our newsletter', ENV['MAILCHIMP_LINK'], class: "btn btn-default" %>
+<% end %>
