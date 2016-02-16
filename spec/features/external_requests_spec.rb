@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 feature 'External request' do
-  it 'correctly calls MailChimp api email subscriber list' do
+  it 'correctly calls MailChimp api' do
 
-    uri = URI('https://apikey:3d0b601bd3197356fdc8088cce0a7be9-us11@us11.api.mailchimp.com/3.0/lists/0e4679a39d/members/b58996c504c5638798eb6b511e6f49af')
+    uri = URI("https://apikey:#{ENV['MAILCHIMP_API_KEY']}@us11.api.mailchimp.com/3.0/lists/#{ENV['MAILCHIMP_LIST_ID']}/members/b58996c504c5638798eb6b511e6f49af")
 
     response = Net::HTTP.get(uri)
 
-    expect(response).to be_success
+    expect(response).to have_http_status(200)
   end
 
   	# let(:user) { create(:user) }
