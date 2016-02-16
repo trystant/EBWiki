@@ -76,6 +76,9 @@ group :development, :test do
 
   # Install a pre-commit hook to enforce code checks before commits
   gem "pre-commit"
+
+  # Make it easier to mock external api calls
+  gem "webmock"
 end
 
 
