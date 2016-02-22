@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  # mount Split::Dashboard, at: '/split'
+  mount Split::Dashboard, :at => 'split', :constraints => lambda { |request|
+    request.env['warden'].authenticated? # are we authenticated?
+    request.env['warden'].authenticate! # authenticate if not already
+    # or even check any other condition
+    request.env['warden'].user.admin?
+  }
+
   get '/maps/index', to: 'maps#index'
 
   get '/about', to: 'static#about'
@@ -27,7 +35,6 @@ Rails.application.routes.draw do
     resources :registrations
   end
 
-  mount Split::Dashboard, at: 'split'
 
   # mailbox folder routes
   get "mailbox", to: redirect("mailbox/inbox")
