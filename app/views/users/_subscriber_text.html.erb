@@ -1,0 +1,9 @@
+<% if current_user.mailchimp_status == "subscribed" %>
+  <h5>You are currently subscribed to receive the EBWiki newsletter. To unsubscribe, uncheck the box below and click the update button below.</h5>
+<% elsif current_user.mailchimp_status == "pending" %>
+  <h5>Just one more step and you'll be on our list!  Please check your email for our message and click the button to confirm your address.</h5>
+<% elsif current_user.mailchimp_status == "unsubscribed" %>
+  <h5>Was it something we said? You have unsubscribed from our newsletter. We'd love to know what we can do better.</h5>
+<% else %>
+  <h5>Check this box to receive our weekly newsletter with updates on these cases and other news:</h5>
+<% end %>
