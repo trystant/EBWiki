@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :calendar do
+    get :get_events, on: :collection
+  end
+
   get '/maps/index', to: 'maps#index'
 
   get '/about', to: 'static#about'

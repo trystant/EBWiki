@@ -24,5 +24,6 @@
 //= require social-share-button
 //= require underscore
 //= require select2
+//= require fullcalendar
 //= require_tree .
 //= require ckeditor/init
