@@ -5,7 +5,7 @@ class CalendarController < ApplicationController
     @articles = Article.all
     events = []
     @articles.each do |article|
-      events << {:id => article.id, :title => "#{article.try(:name)}", :start => "#{article.date}",:end => "#{article.date}" }
+      events << {:url => "#{article_path(article)}", :id => article.id, :title => "#{article.title}", :start => "#{article.date}",:end => "#{article.date}" }
     end
     render :text => events.to_json
   end
