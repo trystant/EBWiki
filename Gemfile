@@ -163,3 +163,6 @@ gem 'metamagic'
 gem 'galerts'
 
 gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
+
+# packager for full_calendar jquery calendar plugin
+gem 'fullcalendar-rails'

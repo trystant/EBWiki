@@ -298,6 +298,10 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    fullcalendar-rails (2.6.1.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     galerts (1.1.2)
       mechanize (~> 2.7)
     geocoder (1.3.1)
@@ -646,6 +650,7 @@ DEPENDENCIES
   faker (~> 1.4.3)
   fog
   friendly_id (~> 5.1.0)
+  fullcalendar-rails
   galerts
   geocoder
   gibbon (= 1.2.0)
