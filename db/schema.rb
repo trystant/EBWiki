@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323064052) do
+ActiveRecord::Schema.define(version: 20160330011016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
@@ -64,6 +63,23 @@ ActiveRecord::Schema.define(version: 20160323064052) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
+  create_table "calendar_events", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text     "description"
+    t.string   "title"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "website_url"
+    t.string   "street_address"
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "zipcode"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "slug"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -81,13 +97,6 @@ ActiveRecord::Schema.define(version: 20160323064052) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
-  create_table "edit_blurbs", force: :cascade do |t|
-    t.text     "blurb"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "article_id"
-  end
-
   create_table "ethnicities", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
@@ -98,6 +107,21 @@ ActiveRecord::Schema.define(version: 20160323064052) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text     "website_url"
+    t.string   "address"
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "zip_code"
+    t.integer  "event_status_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "follows", force: :cascade do |t|

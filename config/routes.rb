@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get :get_events, on: :collection
   end
 
+  resources :calendar_events
+
   get '/maps/index', to: 'maps#index'
 
   get '/about', to: 'static#about'
