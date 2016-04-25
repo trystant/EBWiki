@@ -74,7 +74,7 @@ class Article < ActiveRecord::Base
   end
 
   def tweets
-    hashtag = self.hashtags.first.letters
+    hashtag = self.hashtags.first.letters unless self.hashtags.empty?
     $client.search("#{hashtag} -rt", :result_type => "recent", lang: "en").take(10)
   end
 end
