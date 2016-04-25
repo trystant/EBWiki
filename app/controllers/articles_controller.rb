@@ -15,7 +15,8 @@ class ArticlesController < ApplicationController
     @commentable = @article
     @comments = @commentable.comments
     @comment = Comment.new
-    @subjects = @article.subjects
+    @subjects = @article.subjects # are we using this instance variable?
+    @tweets = @article.tweets
 
     # Check to make sure all required elements are here
     unless @article.present? && @article.present?	&& @commentable.present? && @comment.present? &&
