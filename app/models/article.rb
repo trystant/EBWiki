@@ -11,6 +11,8 @@ class Article < ActiveRecord::Base
   has_many :comments, as: :commentable, :dependent => :destroy
   has_many :subjects
   accepts_nested_attributes_for :subjects, :reject_if => :all_blank, :allow_destroy => true
+  has_many :hashtags
+  accepts_nested_attributes_for :hashtags, :reject_if => :all_blank, :allow_destroy => true
 
   # Paper Trail
   has_paper_trail
