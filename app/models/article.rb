@@ -74,7 +74,14 @@ class Article < ActiveRecord::Base
   end
 
   def tweets
-    hashtag = self.hashtags.first.letters unless self.hashtags.empty?
-    $client.search("#{hashtag} -rt", :result_type => "recent", lang: "en").take(10)
+    unless self.hashtags.empty?
+      tweets = []
+      self.hashtags.each do |tag|
+        $client.search("#{tag.letters} -rt", :result_type => "recent", lang: "en").take(10).each do |tweet|
+          tweets << tweet
+        end
+      end
+    end
+    return tweets.sort_by(&:created_at).reverse
   end
 end
