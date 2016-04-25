@@ -30,10 +30,31 @@
 	    <div class="row">
 				<%= render 'button_group' %>
 			</div>
-			<%= render "comments/form" %>
+<!-- 			<%= render "comments/form" %>
 			<div class="commentList" >
 				<%= render "comments/comments" %>
-			</div>
+			</div> -->
+      <% if @article.hashtags.present? %>
+        <div>
+        <h3>Recent Tweets</h3>
+        <% if @article.tweets.present? %>
+          <ul>
+            <% @article.tweets.each do |tweet| %>
+              <li>
+                <blockquote class="twitter-tweet">
+                  <p><%= link_to tweet.text, "http://twitter.com/statuses/#{tweet.id}", target: '_blank' %></p>
+                  --
+                  <%= link_to tweet.user.screen_name, "http://twitter.com/#{tweet.user.screen_name}", target: '_blank' %>
+                </blockquote>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>There are no recent tweets for this case.</p>
+        <% end %>
+
+        </div>
+      <% end %>
     </div>
 
 	  <div class="col-md-9">
