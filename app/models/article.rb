@@ -70,4 +70,9 @@ class Article < ActiveRecord::Base
       [:title, :city, :zipcode]
     ]
   end
+
+  def tweets
+    hashtag = ["BlackLivesMatter"]
+    $client.search("£#{hashtag} -rt", :result_type => "recent", lang: "en").take(10).count
+  end
 end
