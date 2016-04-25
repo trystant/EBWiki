@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160323064052) do
+ActiveRecord::Schema.define(version: 20160425095727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "hstore"
 
   create_table "ahoy_events", id: :uuid, default: nil, force: :cascade do |t|
     t.uuid     "visit_id"
@@ -28,6 +27,13 @@ ActiveRecord::Schema.define(version: 20160323064052) do
   add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time", using: :btree
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
+
+  create_table "article_documents", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "document_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "article_officers", force: :cascade do |t|
     t.integer  "article_id"
@@ -64,6 +70,23 @@ ActiveRecord::Schema.define(version: 20160323064052) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
+  create_table "calendar_events", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.text     "description"
+    t.string   "title"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "website_url"
+    t.string   "street_address"
+    t.string   "city"
+    t.integer  "state_id"
+    t.string   "zipcode"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.string   "slug"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -81,11 +104,10 @@ ActiveRecord::Schema.define(version: 20160323064052) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
 
-  create_table "edit_blurbs", force: :cascade do |t|
-    t.text     "blurb"
+  create_table "documents", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "article_id"
+    t.string   "document"
   end
 
   create_table "ethnicities", force: :cascade do |t|
@@ -130,6 +152,13 @@ ActiveRecord::Schema.define(version: 20160323064052) do
     t.string   "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string   "letters"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "article_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -278,6 +307,7 @@ ActiveRecord::Schema.define(version: 20160323064052) do
     t.text     "object_changes"
     t.string   "ip"
     t.integer  "transaction_id"
+    t.text     "summary"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
