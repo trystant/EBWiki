@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :hashtag do
-    letters "MyString"
+    letters "#MyString"
   end
 end
