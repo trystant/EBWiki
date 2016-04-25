@@ -56,6 +56,9 @@ gem 'ahoy_matey'
 # use split gem for a/b testing
 gem 'split', require: 'split/dashboard'
 
+# wrapper for twitter api
+gem 'twitter'
+
 gem 'rollbar', '~> 2.8.2'
 group :development, :test do
 
