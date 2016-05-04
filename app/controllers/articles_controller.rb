@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.friendly.find(params[:id])
+    if request.path != article_path(@article)
+      redirect_to @article, status: :moved_permanently
+    end
     @commentable = @article
     @comments = @commentable.comments
     @comment = Comment.new
