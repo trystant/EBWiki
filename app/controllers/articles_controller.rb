@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.friendly.find(params[:id])
-    @article.slug = nil
+    @article.update_attribute(:slug, nil)
     if @article.remove_avatar?
       @article.remove_avatar!
     end
