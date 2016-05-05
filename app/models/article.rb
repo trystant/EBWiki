@@ -81,7 +81,7 @@ class Article < ActiveRecord::Base
           tweets << tweet
         end
       end
-    end
     return tweets.sort_by(&:created_at).reverse
+    end
   end
 end
