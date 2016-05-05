@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20160425095727) do
   add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id", using: :btree
   add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id", using: :btree
 
-  create_table "article_documents", force: :cascade do |t|
-    t.integer  "article_id"
-    t.integer  "document_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "article_officers", force: :cascade do |t|
     t.integer  "article_id"
     t.integer  "officer_id"
@@ -103,12 +96,6 @@ ActiveRecord::Schema.define(version: 20160425095727) do
   end
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
-
-  create_table "documents", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "document"
-  end
 
   create_table "ethnicities", force: :cascade do |t|
     t.string   "title"
@@ -307,7 +294,6 @@ ActiveRecord::Schema.define(version: 20160425095727) do
     t.text     "object_changes"
     t.string   "ip"
     t.integer  "transaction_id"
-    t.text     "summary"
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
