@@ -90,8 +90,9 @@ class Article < ActiveRecord::Base
             tweets << tweet
           end
         end
+        return tweets.uniq
         begin
-          tweets.to_a
+          tweets.uniq.to_a
         rescue Twitter::Error::TooManyRequests => error
           # NOTE: Your process could go to sleep for up to 15 minutes but if you
           # retry any sooner, it will almost certainly fail with the same exception.
