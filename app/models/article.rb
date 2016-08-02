@@ -111,6 +111,11 @@ class Article < ActiveRecord::Base
     return (((last_month_case_updates.to_f / prior_30_days_case_updates) - 1) * 100).round(2)
   end
 
+  def tweets
+    hashtag = ["BlackLivesMatter"]
+    $client.search("£#{hashtag} -rt", :result_type => "recent", lang: "en").take(10).count
+  end
+
 private
 
   def check_for_empty_fields
