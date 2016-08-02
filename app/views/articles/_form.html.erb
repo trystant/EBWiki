@@ -106,6 +106,20 @@
 
 <div class="cold-md-12">
   <fieldset class="fsStyle">
+    <legend class="legendStyle">Related HashTags (Including the "#")<%= image_tag('help_icon.png', data: {:toggle => 'popover', :container => 'body', :trigger => 'hover',:placement => "bottom", :title => "Links", :content => "These hashtags will enable us to pull content from Twitter and other social media to track and display the latest public conversations around this case."})%></legend>
+    <div id="hashtags">
+        <%= f.simple_fields_for :hashtags do |hashtag| %>
+          <%= render 'hashtag_fields', :f => hashtag %>
+        <% end %>
+      <div class="hashtags">
+        <%= link_to_add_association 'add a hashtag', f, :hashtags, :class => "btn btn-warning" %>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="cold-md-12">
+  <fieldset class="fsStyle">
     <legend class="legendStyle">Summary of Changes to the Article <%= image_tag('help_icon.png', data: {:toggle => 'popover', :container => 'body', :trigger => 'hover',:placement => "bottom", :title => "Main Content Fields", :content => "Please summarize the edits you have made to this case.  These summaries populate the history tabs to make the history of the article more readable to users."})%></legend>
     <%= f.input :summary %>
   </fieldset>
