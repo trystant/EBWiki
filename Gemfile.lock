@@ -81,6 +81,7 @@ GEM
       momentjs-rails (>= 2.8.1)
     brakeman (3.3.2)
     browser (2.2.0)
+    buftok (0.2.0)
     builder (3.2.2)
     bullet (5.1.1)
       activesupport (>= 3.0.0)
@@ -163,6 +164,7 @@ GEM
     elasticsearch-transport (1.0.18)
       faraday
       multi_json
+    equalizer (0.0.10)
     errbase (0.0.3)
     erubis (2.7.0)
     excon (0.50.1)
@@ -347,8 +349,15 @@ GEM
     hightop (0.1.4)
       activerecord
     hodel_3000_compliant_logger (0.1.1)
+    http (1.0.4)
+      addressable (~> 2.3)
+      http-cookie (~> 1.0)
+      http-form_data (~> 1.0.1)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http-form_data (1.0.1)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     image_optimizer (1.3.0)
     inflecto (0.0.2)
@@ -389,6 +398,8 @@ GEM
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     metamagic (3.1.7)
       rails (>= 3.0.0)
     method_source (0.8.2)
@@ -402,6 +413,7 @@ GEM
     multi_json (1.12.1)
     multi_test (0.1.2)
     multipart-post (2.0.0)
+    naught (1.1.0)
     nenv (0.3.0)
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
@@ -568,6 +580,7 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simple_oauth (0.3.1)
     simplecov (0.12.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -603,6 +616,17 @@ GEM
     turbolinks (5.0.0)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
+    twitter (5.16.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (= 0.0.10)
+      faraday (~> 0.9.0)
+      http (~> 1.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -699,6 +723,7 @@ DEPENDENCIES
   split
   spring
   turbolinks
+  twitter
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   whenever

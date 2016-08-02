@@ -170,3 +170,6 @@ gem 'metamagic'
 gem 'galerts'
 
 gem 'ckeditor', :git => 'https://github.com/galetahub/ckeditor.git'
+
+# wrapper for twitter api
+gem 'twitter'
