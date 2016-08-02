@@ -115,16 +115,37 @@ class Article < ActiveRecord::Base
     return (((last_month_case_updates.to_f / prior_30_days_case_updates) - 1) * 100).round(2)
   end
 
+  def twitter_time_to_reset
+    (Time.at($client.get('/1.1/application/rate_limit_status.json')[:resources][:search][:"/search/tweets"][:reset]) - Time.now).round
+  end
+
+  def twitter_remaining
+    $client.get('/1.1/application/rate_limit_status.json')[:resources][:search][:"/search/tweets"][:remaining]
+  end
+
   def tweets
-    unless self.hashtags.empty?
-      tweets = []
-      self.hashtags.each do |tag|
-        $client.search("#{tag.letters} -rt", :result_type => "recent", lang: "en").take(10).each do |tweet|
-          tweets << tweet
+    if self.twitter_remaining > 0
+      unless self.hashtags.empty?
+        tweets = []
+        self.hashtags.each do |tag|
+          $client.search("#{tag.letters} -rt", :result_type => "recent", lang: "en").take(10).each do |tweet|
+            tweets << tweet
+          end
         end
+        begin
+          tweets.to_a
+        rescue Twitter::Error::TooManyRequests => error
+          # NOTE: Your process could go to sleep for up to 15 minutes but if you
+          # retry any sooner, it will almost certainly fail with the same exception.
+          sleep error.rate_limit.reset_in + 1
+          retry
+        end
+
+      return tweets.sort_by(&:created_at).reverse
       end
+    else
+      return "Waiting for Twitter API limit to reset in #{self.twitter_time_to_reset} seconds"
     end
-    return tweets.sort_by(&:created_at).reverse
   end
 
 private
