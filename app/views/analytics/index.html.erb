@@ -30,7 +30,34 @@
         </div>
       </div>
     </div>
-
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="chart-wrapper">
+        <div class="chart-title background-gray">
+          Incidents of Police Violence By Day
+        </div>
+        <div class="chart-stage">
+          <%= number_of_incidents_by_day %>
+        </div>
+        <div class="chart-notes">
+          Column heights represent the number of users added each day.
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="chart-wrapper">
+        <div class="chart-title background-gray">
+          Number of People Killed by Police Violence Today
+        </div>
+        <div class="chart-stage">
+          <div class="metric">
+            <%= incidents_today %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="row">

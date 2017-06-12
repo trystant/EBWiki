@@ -54,7 +54,8 @@ class Article < ActiveRecord::Base
 
 
   # Scopes
-  scope :by_state, -> (state_id) {where(state_id: state_id)}
+  scope :occuring_today, -> { where(date: Date.today) }
+  scope :by_state, -> (state_id) { where(state_id: state_id) }
   scope :property_count_over_time, -> (property, days) { where( "#{property}": "#{days}".to_i.days.ago..Time.now).count }
 
   def full_address
