@@ -49,11 +49,11 @@
     <div class="col-sm-5">
       <div class="chart-wrapper">
         <div class="chart-title background-gray">
-          Number of People Killed by Police Violence Today
+          Time Since Last Person Killed
         </div>
         <div class="chart-stage">
           <div class="metric">
-            <%= incidents_today %>
+            <%= Article.days_since_last_case_date %> Days Ago
           </div>
         </div>
       </div>

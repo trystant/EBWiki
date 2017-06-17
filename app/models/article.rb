@@ -54,12 +54,16 @@ class Article < ActiveRecord::Base
 
 
   # Scopes
-  scope :occuring_today, -> { where(date: Date.today) }
   scope :by_state, -> (state_id) { where(state_id: state_id) }
   scope :property_count_over_time, -> (property, days) { where( "#{property}": "#{days}".to_i.days.ago..Time.now).count }
-
+  
   def full_address
     "#{address} #{city} #{state.ansi_code} #{zipcode}".strip
+  end
+  
+  def self.days_since_last_case_date
+    return (Date.today - self.latest.date.to_date).to_i unless Article.all.empty?
+    "No cases added yet."
   end
 
   def self.find_by_search(query)
@@ -124,5 +128,9 @@ private
     unless (self.changed & attrs).any?
       self.errors[:base] << "You must change field other than summary to generate a new version"
     end
+  end
+
+  def self.latest
+    Article.order("date DESC").first
   end
 end

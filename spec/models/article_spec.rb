@@ -107,6 +107,31 @@ describe "#title" do
   end
 end
 
+describe "#days_since_last_case_date" do
+  it "returns correct number of elapsed days when there are cases" do
+    FactoryGirl.create_list(:article, 3, date: 3.days.ago)
+    FactoryGirl.create(:article, date: 1.day.ago)
+    
+    expect(Article.days_since_last_case_date).to eq(1)
+    expect(Article.days_since_last_case_date).to be_a(Integer)
+  end
+  it "returns a message when no entries have been added" do
+    expect(Article.days_since_last_case_date).to be_a(String)
+    expect(Article.days_since_last_case_date).to include("No cases added")
+  end
+end
+
+describe "#latest" do
+  it "returns the most recent case" do
+    FactoryGirl.create_list(:article, 3, date: 3.days.ago)
+    latest_case = FactoryGirl.create(:article, date: 1.day.ago)
+    
+    expect(Article.latest).not_to be_a(ActiveRecord::Relation)
+    expect(Article.latest).to be_a(Article)
+    expect(Article.latest).to eq(latest_case)
+  end
+end
+
 describe "follower_count" do
   it "gives the correct followers count" do
     article = FactoryGirl.create(:article, id: 10)
