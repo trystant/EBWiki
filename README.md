@@ -1,5 +1,6 @@
 <p><a href="https://travis-ci.org/EBWiki/EBWiki"><img src="https://travis-ci.org/EBWiki/EBWiki.svg?branch=master" alt="Build Status" style="max-width:100%;"></a>  <a href="https://codeclimate.com/github/EBWiki/EBWiki"><img src="https://codeclimate.com/github/EBWiki/EBWiki/badges/gpa.svg" /></a> <a href="https://codeclimate.com/github/EBWiki/EBWiki/coverage"><img src="https://codeclimate.com/github/EBWiki/EBWiki/badges/coverage.svg" /></a> <a href="https://www.codetriage.com/ebwiki/ebwiki"><img src="https://www.codetriage.com/ebwiki/ebwiki/badges/users.svg" /></a></p>
 
+[![SecurityHeaders.io](https://securityheadersiobadges.azurewebsites.net/create/badge?domain=https://ebwiki.org/)](https://securityheaders.io/?q=https://ebwiki.org/&hide=on)
 ## Synopsis
 
 This is the codebase behind [EBWiki.org](http://ebwiki.org), a site dedicated to documenting instances where people of color are killed by Law Enforcement Officers during routine interactions.
