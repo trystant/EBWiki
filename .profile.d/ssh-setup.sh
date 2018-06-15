@@ -13,17 +13,17 @@ echo $0: creating public and private key files
 
 # Note use of double quotes, required to preserve newlines
 #echo "${HEROKU_PRIVATE_KEY}" > ${HOME}/.ssh/heroku_id_rsa
-c#hmod 600 ${HOME}/.ssh/heroku_id_rsa
+#chmod 600 ${HOME}/.ssh/heroku_id_rsa
 
 # Preload the known_hosts file  (see "version 2" below)
 
 # Start the SSH tunnel if not already running
-SSH_CMD="ssh -o ProxyCommand='ncat --proxy-type socks5 --proxy ${FIXIE_SOCKS_HOST} --proxy-auth ${FIXIE_SOCKS_CREDS} %h %p' `whoami`@${HOSTNAME}"
+#SSH_CMD="ssh -o ProxyCommand='ncat --proxy-type socks5 --proxy ${FIXIE_SOCKS_HOST} --proxy-auth ${FIXIE_SOCKS_CREDS} %h %p' `whoami`@${HOSTNAME}"
 
-PID=`pgrep -f "${SSH_CMD}"`
-if [ $PID ] ; then
-    echo $0: tunnel already running on ${PID}
-else
-    echo $0 launching tunnel
-    $SSH_CMD
-fi
+#PID=`pgrep -f "${SSH_CMD}"`
+#if [ $PID ] ; then
+#    echo $0: tunnel already running on ${PID}
+#else
+#    echo $0 launching tunnel
+#   $SSH_CMD
+#fi
