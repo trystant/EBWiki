@@ -37,13 +37,26 @@ There are a number of guides available for running EBWiki in your local environm
 
 ## Restoring Local Database from Production Backup
 
-The EBWiki repo has a `db/seeds.rb` file that you can use to add some basic data to your local database for development purposes.  However, there are times when you want your local database to have data similar to what you'd see in production (e.g, when working on analytics or search).  To address that, the repo also contains a recent backup of the production database, named `MM_YYYY.dump`.  To restore the backup dump into your local database, use the following command:
+The EBWiki repo has a `db/seeds.rb` file that you can use to add some basic data 
+to your local database for development purposes.  However, there are times when 
+you want your local database to have data similar to what you'd see in 
+production (e.g, when working on analytics or search).  To address that, the 
+repo also contains a recent backup of the production database, named 
+`MM_YYYY.dump`.  To restore the backup dump into your local database, use the 
+following command:
 
 ```
-pg_restore --verbose --clean --no-acl --no-owner -p 5432 -h localhost -U blackops -d blackops_development MM_YYYY.dump
+pg_restore --verbose --clean --no-acl --no-owner -p 5432 -h localhost 
+-U blackops -d blackops_development MM_YYYY.dump
 ```
 
 ## Third-Party Services
 * Elasticsearch for searching cases
 * Postgres 9.4 or higher
-* Redis (currently for the [Split](https://github.com/splitrb/split) gem for A/B testing )
+* Redis (currently for the [Split](https://github.com/splitrb/split) gem for 
+A/B testing )
+
+## Backup Strategies
+EBWiki is currently using [Autobus](https://www.autobus.io/info/index) for 
+daily and weekly backups as part of a backup strategy that will not be fully
+explained publicly.
