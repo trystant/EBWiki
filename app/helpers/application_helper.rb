@@ -24,10 +24,6 @@ module ApplicationHelper
     @hash = Gmaps4rails.build_markers(cases) do |this_case, marker|
       marker.lat this_case[1]
       marker.lng this_case[2]
-      marker.infowindow controller.render_to_string(
-        partial: '/cases/info_window',
-        locals: { this_case: this_case }
-      )
     end
     @hash
   end
