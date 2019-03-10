@@ -21,7 +21,6 @@ RSpec.describe 'maps/index.html.erb', type: :view do
 
     render
 
-    expect(rendered).to match(/John Doe/m)
-    expect(rendered).to match(/Jimmy Doe/m)
+    expect(rendered).to match(/EBWiki below maps 2 cases of violence against people of color/m)
   end
 end
