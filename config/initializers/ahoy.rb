@@ -13,6 +13,6 @@ class Ahoy::Store < Ahoy::DatabaseStore
   protected
 
   def visit_model
-    Visit
+    ::Ahoy::Store::Visit
   end
 end
