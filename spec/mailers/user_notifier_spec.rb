@@ -80,4 +80,18 @@ RSpec.describe UserNotifier, type: :mailer do
       expect(mail.body.encoded.gsub(/\s+/, '')).not_to include("It is very important that you click to follow one or more cases and allow us to keep\nyou up to date. The more people paying attention, the easier it will be effect change.".gsub(/\s+/, ''))
     end
   end
+
+  describe 'reset confirmation email' do
+    let(:user)      { FactoryBot.create(:user) }
+    let!(:mail)     { UserNotifier.reset_confirmation(user) }
+
+    it 'renders the subject & receiver email' do
+      expect(mail.subject).to eql('Password Change Confirmation')
+      expect(mail.to).to eq([user.email])
+    end
+
+    it 'renders the proper message' do
+      expect(mail.body.encoded.gsub(/\s+/, '')).to include('Your password update request is completed successfully.'.gsub(/\s+/, ''))
+    end
+  end
 end
