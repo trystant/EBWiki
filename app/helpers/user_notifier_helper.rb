@@ -2,10 +2,7 @@
 
 # Set of helper methods for composing email messages
 module UserNotifierHelper
-  FOLLOW_CALL_TO_ACTION = <<~"FCTA"
-    It is very important that you click to follow one or more cases and allow us to keep
-    you up to date. The more people paying attention, the easier it will be to affect change.
-  FCTA
+  FOLLOW_CALL_TO_ACTION = I18n.t 'mailboxer.user_notifier_helper.follow_call_to_action'
 
   SUBSCRIBER_MESSAGE = "As a newsletter subscriber, you'll \
     receive our general updates periodically."
